@@ -3,7 +3,17 @@
     <head>
     <script>
         function computerPlay() {
-        // randomly return either rock paper or scissors
+        // 0 = rock, 1 = paper 2 = scissors
+            let randomNumber = Math.floor(Math.random() * Math.floor(3));
+            let computerChoice;
+            switch (randomNumber) {
+                case 0:
+                return computerChoice = "rock";
+                case 1:
+                return computerChoice = "paper";
+                case 2: 
+                return computerChoice = "scissors";
+            }
         }
 
         function playRound(playerSelection, computerSelection) {
@@ -15,6 +25,7 @@
         function game() {
         // play a 5 round game, keep score, report winner.
         }
+        
     </script>
     </head>
     
