@@ -2,7 +2,7 @@
 <html>
     <head>
     <script>
-        
+
         function computerPlay() {
         // 0 = rock, 1 = paper 2 = scissors
             let randomNumber = Math.floor(Math.random() * Math.floor(3));
@@ -33,7 +33,7 @@
             } else if (playerChoice == "rock" && computerChoice == "scissors"
                     || playerChoice == "paper" && computerChoice == "rock" 
                     || playerChoice == "scissors" && computerChoice == "paper") {
-                return "You Win!!!";
+                return "You Win!";
             } else {
                 return "Unacceptable. Please pick rock, paper, or scissors (case does not matter.)";
             }
@@ -41,6 +41,30 @@
 
         function game() {
         // play a 5 round game, keep score, report winner.
+          console.log("Alright! Five rounds, you and me, let's go!");
+          let playerScore = 0;
+          let computerScore = 0;
+          for (i = 0; i < 5; i++) {
+              let result = playRound();
+              if (result == "You Win!") {
+                playerScore++;
+                console.log("Computer: You win this round...");
+              } else if (result == "You Lose!") {
+                computerScore++;
+                console.log("Computer: That's a point for me!");
+              } else {
+                i--;
+                console.log("Computer: Tie! Let's re-do that round.");
+              }
+              console.log(`Current score report: Computer: ${computerScore} points Player: ${playerScore} points. ${i + 1} rounds resolved so far.`);
+          }
+          if (playerScore > computerScore) {
+              console.log("Computer: I can't believe a human beat me.")
+          } else if (computerScore > playerScore) {
+              console.log("Computer: You didn't stand a chance.");
+          } else {
+              console.log("Programmer: Oh god, there's a bug that I didn't anticipate.")
+          }
         }
         
     </script>
