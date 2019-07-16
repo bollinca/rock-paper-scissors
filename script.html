@@ -2,8 +2,7 @@
 <html>
     <head>
     <script>
-        //let computerChoice
-        //let playerChoice
+        
         function computerPlay() {
         // 0 = rock, 1 = paper 2 = scissors
             let randomNumber = Math.floor(Math.random() * Math.floor(3));
@@ -21,21 +20,22 @@
         function playRound(playerSelection, computerSelection) {
         // prompt player for their choice (case insensitive) 
             let playerChoice = prompt("Choose your weapon: Rock, Paper, or Scissors?");
+            //convert playerchoice to lowercase (makes input case insensitive);
+            playerChoice = playerChoice.toLowerCase();
         // compare to computer
             let computerChoice = computerPlay();
             if (computerChoice == playerChoice) {
-                console.log(computerChoice, playerChoice);
                 return "Tie! Time for a rematch!"
             } else if (computerChoice == "rock" && playerChoice == "scissors"
                     || computerChoice == "paper" && playerChoice == "rock" 
                     || computerChoice == "scissors" && playerChoice == "paper") {
-                    console.log(computerChoice, playerChoice);
                     return "You Lose!";
             } else if (playerChoice == "rock" && computerChoice == "scissors"
                     || playerChoice == "paper" && computerChoice == "rock" 
                     || playerChoice == "scissors" && computerChoice == "paper") {
-                console.log(computerChoice, playerChoice);
                 return "You Win!!!";
+            } else {
+                return "Unacceptable. Please pick rock, paper, or scissors (case does not matter.)";
             }
         }
 
