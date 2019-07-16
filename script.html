@@ -59,11 +59,11 @@
               console.log(`Current score report: Computer: ${computerScore} points Player: ${playerScore} points. ${i + 1} rounds resolved so far.`);
           }
           if (playerScore > computerScore) {
-              console.log("Computer: I can't believe a human beat me.")
+              return "Computer: I can't believe a human beat me."
           } else if (computerScore > playerScore) {
-              console.log("Computer: You didn't stand a chance.");
+              return "Computer: You didn't stand a chance.";
           } else {
-              console.log("Programmer: Oh god, there's a bug that I didn't anticipate.")
+              return "Programmer: Oh god, there's a bug that I didn't anticipate."
           }
         }
         
