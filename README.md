@@ -1,1 +1,1 @@
-A first draft of Rock Paper Scissors, made to practice Javascript fundamentals.
+A (slightly) updated version of my first ever rock-paper-scissors program. Now including buttons!
