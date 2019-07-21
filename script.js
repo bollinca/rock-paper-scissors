@@ -16,9 +16,9 @@ function playRound(playerChoice) {
     let computerChoice = computerPlay();
     if (computerScore === 0 && playerScore === 0)
         playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
-        computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
+    computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
     if (computerChoice == playerChoice) {
-        resultsDiv.textContent = 'Tie! Time for a rematch!';
+        resultsDiv.textContent = 'Tie. No points awarded.';
     } else if (computerChoice == 'rock' && playerChoice == 'scissors'
         || computerChoice == 'paper' && playerChoice == 'rock'
         || computerChoice == 'scissors' && playerChoice == 'paper') {
@@ -34,9 +34,27 @@ function playRound(playerChoice) {
     }
     if (computerScore === 5 || playerScore === 5) {
         if (computerScore > playerScore) {
-            resultsDiv.textContent = 'you lost.';
+            switch (playerScore) {
+                case 0:
+                    resultsDiv.textContent = 'you lost. horribly.';
+                    break;
+                case 1:
+                    resultsDiv.textContent = 'you lost. at least you tried.';
+                    break;
+                case 2:
+                    resultsDiv.textContent = 'you lost. two bad.';
+                    break;
+                case 3:
+                    resultsDiv.textContent = 'you lost.';
+                    break;
+                case 4:
+                    resultsDiv.textContent = 'you lost. close one though.';
+                    break;
+                default:
+                    resultsDiv.textContent = 'you lost.';
+            }
         } else if (playerScore > computerScore) {
-            resultsDiv.textContent = 'You WIN!!!';
+            resultsDiv.textContent = 'You WON!!!';
         }
         computerScore = 0;
         playerScore = 0;
@@ -52,6 +70,7 @@ let playerScoreDisplay = document.getElementById('player-score');
 let computerScoreDisplay = document.getElementById('computer-score');
 let resultsDiv = document.getElementById('results');
 
+let buttons = document.querySelectorAll('button');
 let rockButton = document.getElementById('rock');
 let paperButton = document.getElementById('paper');
 let scissorsButton = document.getElementById('scissors');
