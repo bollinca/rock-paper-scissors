@@ -42,7 +42,7 @@ function playRound(playerChoice) {
                     resultsDiv.textContent = 'you lost. at least you tried.';
                     break;
                 case 2:
-                    resultsDiv.textContent = 'you lost. two bad.';
+                    resultsDiv.textContent = 'you lost. thats... two bad.';
                     break;
                 case 3:
                     resultsDiv.textContent = 'you lost.';
@@ -69,6 +69,7 @@ let scoreDisplay = document.getElementById('score');
 let playerScoreDisplay = document.getElementById('player-score');
 let computerScoreDisplay = document.getElementById('computer-score');
 let resultsDiv = document.getElementById('results');
+resultsDiv.setAttribute('style', 'text-align: center;')
 
 let buttons = document.querySelectorAll('button');
 let rockButton = document.getElementById('rock');
@@ -78,33 +79,3 @@ let scissorsButton = document.getElementById('scissors');
 rockButton.addEventListener('click', () => playRound('rock'));
 paperButton.addEventListener('click', () => playRound('paper'));
 scissorsButton.addEventListener('click', () => playRound('scissors'));
-
-
-
-
-function keepScore() {
-    // play a 5 round game, keep score, report winner.
-    let playerScore = 0;
-    let computerScore = 0;
-    for (i = 0; i < 5; i++) {
-        let result = playRound();
-        if (result == "You Win!") {
-            playerScore++;
-            console.log("Computer: You win this round...");
-        } else if (result == "You Lose!") {
-            computerScore++;
-            console.log("Computer: That's a point for me!");
-        } else {
-            i--;
-            console.log("Computer: Tie! Let's re-do that round.");
-        }
-        console.log(`Current score report: Computer: ${computerScore} points Player: ${playerScore} points.`);
-    }
-    if (playerScore > computerScore) {
-        return "You Win!"
-    } else if (computerScore > playerScore) {
-        return "You Lose.";
-    } else {
-        return "Some sort of bug has occurred."
-    }
-}

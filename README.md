@@ -1,1 +1,1 @@
-A (slightly) updated version of my first ever rock-paper-scissors program. Now including buttons!
+An updated version of my first ever rock-paper-scissors program. Now including buttons!
