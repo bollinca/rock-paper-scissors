@@ -36,22 +36,22 @@ function playRound(playerChoice) {
         if (computerScore > playerScore) {
             switch (playerScore) {
                 case 0:
-                    resultsDiv.textContent = 'you lost. horribly.';
+                    resultsDiv.textContent = 'You lost. Horribly.';
                     break;
                 case 1:
-                    resultsDiv.textContent = 'you lost. at least you tried.';
+                    resultsDiv.textContent = 'You lost. At least you tried.';
                     break;
                 case 2:
-                    resultsDiv.textContent = 'you lost. thats... two bad.';
+                    resultsDiv.textContent = 'You lost. That\'s... two bad.';
                     break;
                 case 3:
-                    resultsDiv.textContent = 'you lost.';
+                    resultsDiv.textContent = 'You lost.';
                     break;
                 case 4:
-                    resultsDiv.textContent = 'you lost. close one though.';
+                    resultsDiv.textContent = 'You lost. Close one though.';
                     break;
                 default:
-                    resultsDiv.textContent = 'you lost.';
+                    resultsDiv.textContent = 'You lost.';
             }
         } else if (playerScore > computerScore) {
             resultsDiv.textContent = 'You WON!!!';
