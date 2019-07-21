@@ -1,1 +1,0 @@
-A first draft of Rock Paper Scissors, made to practice Javascript fundamentals.
