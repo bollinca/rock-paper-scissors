@@ -11,12 +11,51 @@ function computerPlay() {
     }
 }
 
-function playRound(playerChoice) {
-    // compare to computer
-    let computerChoice = computerPlay();
-    if (computerScore === 0 && playerScore === 0)
-        playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
-    computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
+function displayLossMessage(playerScore) {
+    let lossMessage;
+    switch (playerScore) {
+        case 0:
+            lossMessage = 'You lost. Horribly.';
+            break;
+        case 1:
+            lossMessage = 'You lost. At least you tried.';
+            break;
+        case 2:
+            lossMessage = 'You lost. That\'s... two bad.';
+            break;
+        case 3:
+            lossMessage = 'You lost.';
+            break;
+        case 4:
+            lossMessage = 'You lost. Close one though.';
+            break;
+    }
+    resultsDiv.textContent = lossMessage;
+}
+
+function displayWinMessage(computerScore) {
+    let winMessage;
+    switch (computerScore) {
+        case 0:
+            winMessage = 'You won with a perfect score!!!'
+            break;
+        case 1:
+            winMessage = 'You won a nearly flawless victory!'
+            break;
+        case 2:
+            winMessage = 'You won by quite a bit!'
+            break;
+        case 3:
+            winMessage = 'You won!'
+            break;
+        case 4:
+            winMessage = 'You won a hard fought victory!'
+            break;
+    }
+    resultsDiv.textContent = winMessage;
+}
+
+function playAndDisplayMatch(computerChoice, playerChoice) {
     if (computerChoice == playerChoice) {
         resultsDiv.textContent = 'Tie. No points awarded.';
     } else if (computerChoice == 'rock' && playerChoice == 'scissors'
@@ -32,34 +71,27 @@ function playRound(playerChoice) {
         resultsDiv.textContent = 'Player +1 point.';
         playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
     }
+}
+
+function playBestOfFiveRound(playerChoice) {
+    // compare to computer
+    let computerChoice = computerPlay();
+    if (computerScore === 0 && playerScore === 0) {
+        playerScoreDisplay.textContent = `Player Score: ${playerScore}`;
+        computerScoreDisplay.textContent = `Computer Score: ${computerScore}`;
+    }
+    playAndDisplayMatch(computerChoice, playerChoice);
     if (computerScore === 5 || playerScore === 5) {
         if (computerScore > playerScore) {
-            switch (playerScore) {
-                case 0:
-                    resultsDiv.textContent = 'You lost. Horribly.';
-                    break;
-                case 1:
-                    resultsDiv.textContent = 'You lost. At least you tried.';
-                    break;
-                case 2:
-                    resultsDiv.textContent = 'You lost. That\'s... two bad.';
-                    break;
-                case 3:
-                    resultsDiv.textContent = 'You lost.';
-                    break;
-                case 4:
-                    resultsDiv.textContent = 'You lost. Close one though.';
-                    break;
-                default:
-                    resultsDiv.textContent = 'You lost.';
-            }
+            displayLossMessage(playerScore);
         } else if (playerScore > computerScore) {
-            resultsDiv.textContent = 'You WON!!!';
+            displayWinMessage(computerScore);
         }
         computerScore = 0;
         playerScore = 0;
     }
 }
+
 //score keeping variables
 let playerScore = 0;
 let computerScore = 0;
@@ -76,6 +108,6 @@ let rockButton = document.getElementById('rock');
 let paperButton = document.getElementById('paper');
 let scissorsButton = document.getElementById('scissors');
 
-rockButton.addEventListener('click', () => playRound('rock'));
-paperButton.addEventListener('click', () => playRound('paper'));
-scissorsButton.addEventListener('click', () => playRound('scissors'));
+rockButton.addEventListener('click', () => playBestOfFiveRound('rock'));
+paperButton.addEventListener('click', () => playBestOfFiveRound('paper'));
+scissorsButton.addEventListener('click', () => playBestOfFiveRound('scissors'));
